@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name        Redd.Tube Respect Mute
-// @namespace   Violentmonkey Scripts
-// @grant       none
-// @version     0.4
+// @description Remember if videos should be muted on Redd.Tube
+// @author      VoltronicAcid
+// @namespace   https://github.com/VoltronicAcid/
+// @homepageURL https://github.com/VoltronicAcid/redd.tube-respect_mute
+// @downloadURL https://github.com/VoltronicAcid/redd.tube-respect_mute
+// @version     0.5
 // @match       https://www.redd.tube/video/*
 // @match       https://redd.tube/video/*
-// @author      -
-// @description Remember if videos should be muted
 // ==/UserScript==
 
 (() => {
