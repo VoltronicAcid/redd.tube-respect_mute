@@ -23,7 +23,6 @@
     }
 
     document.addEventListener('canplay', (evnt) => {
-        console.warn(`%c${evnt.type} event fired`, 'color:goldenrod; font-weight:bolder; font-size: 14px;');
         const video = evnt.target;
         const vidContainsAudio = video.webkitAudioDecodedByteCount > 0 || video.mozHasAudio;
 
