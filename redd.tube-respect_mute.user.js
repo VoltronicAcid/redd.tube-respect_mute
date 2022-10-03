@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name        Redd.Tube Respect Mute
 // @description Remember if videos should be muted on Redd.Tube
-// @author      VoltronicAcid
-// @namespace   https://github.com/VoltronicAcid/
-// @homepageURL https://github.com/VoltronicAcid/redd.tube-respect_mute
-// @downloadURL https://github.com/VoltronicAcid/redd.tube-respect_mute
-// @version     0.6
+// @namespace   https://sleazyfork.org/en/users/963844-hibye
+// @homepageURL https://sleazyfork.org/en/scripts/452422-redd-tube-respect-mute
+// @version     0.7
 // @match       https://www.redd.tube/video/*
 // @match       https://redd.tube/video/*
 // ==/UserScript==
