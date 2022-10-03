@@ -5,7 +5,7 @@
 // @namespace   https://github.com/VoltronicAcid/
 // @homepageURL https://github.com/VoltronicAcid/redd.tube-respect_mute
 // @downloadURL https://github.com/VoltronicAcid/redd.tube-respect_mute
-// @version     0.5
+// @version     0.6
 // @match       https://www.redd.tube/video/*
 // @match       https://redd.tube/video/*
 // ==/UserScript==
@@ -23,13 +23,17 @@
     }
 
     document.addEventListener('canplay', (evnt) => {
+        console.warn(`%c${evnt.type} event fired`, 'color:goldenrod; font-weight:bolder; font-size: 14px;');
         const video = evnt.target;
         const vidContainsAudio = video.webkitAudioDecodedByteCount > 0 || video.mozHasAudio;
 
-        if (vidContainsAudio) {
-            const currVal = localStorage.getItem(settingKey);
+        if (localStorage.getItem(settingKey) === null) {
+            localStorage.setItem(settingKey, mutedVal);
+        }
+        const currMuteVal = localStorage.getItem(settingKey);
 
-            if (currVal === unmutedVal && video.muted) {
+        if (vidContainsAudio) {
+            if (currMuteVal === unmutedVal && video.muted) {
                 video.muted = false;
                 unpauseVideo(video);
             }
