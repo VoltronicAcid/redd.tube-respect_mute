@@ -5,13 +5,13 @@
 // @namespace   https://github.com/VoltronicAcid/
 // @homepageURL https://github.com/VoltronicAcid/redd.tube-respect_mute
 // @downloadURL https://github.com/VoltronicAcid/redd.tube-respect_mute
-// @version     0.5
+// @version     0.6
 // @match       https://www.redd.tube/video/*
 // @match       https://redd.tube/video/*
 // ==/UserScript==
 
 (() => {
-    const settingKey = 'muteVideo';
+    const muteSetting = 'muteVideo';
     const mutedVal = 'mute';
     const unmutedVal = 'unMute';
 
@@ -26,10 +26,13 @@
         const video = evnt.target;
         const vidContainsAudio = video.webkitAudioDecodedByteCount > 0 || video.mozHasAudio;
 
-        if (vidContainsAudio) {
-            const currVal = localStorage.getItem(settingKey);
+        if (localStorage.getItem(muteSetting) === null) {
+            localStorage.setItem(muteSetting, mutedVal);
+        }
+        const currMuteVal = localStorage.getItem(muteSetting);
 
-            if (currVal === unmutedVal && video.muted) {
+        if (vidContainsAudio) {
+            if (currMuteVal === unmutedVal && video.muted) {
                 video.muted = false;
                 unpauseVideo(video);
             }
@@ -37,7 +40,7 @@
 
         video.addEventListener('volumechange', () => {
             const settingVal = video.muted || video.volume === 0 ? mutedVal : unmutedVal;
-            localStorage.setItem(settingKey, settingVal);
+            localStorage.setItem(muteSetting, settingVal);
         });
 
     }, { capture: true, once: true });
