@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 (() => {
-    const settingKey = 'muteVideo';
+    const muteSetting = 'muteVideo';
     const mutedVal = 'mute';
     const unmutedVal = 'unMute';
 
@@ -26,10 +26,10 @@
         const video = evnt.target;
         const vidContainsAudio = video.webkitAudioDecodedByteCount > 0 || video.mozHasAudio;
 
-        if (localStorage.getItem(settingKey) === null) {
-            localStorage.setItem(settingKey, mutedVal);
+        if (localStorage.getItem(muteSetting) === null) {
+            localStorage.setItem(muteSetting, mutedVal);
         }
-        const currMuteVal = localStorage.getItem(settingKey);
+        const currMuteVal = localStorage.getItem(muteSetting);
 
         if (vidContainsAudio) {
             if (currMuteVal === unmutedVal && video.muted) {
@@ -40,7 +40,7 @@
 
         video.addEventListener('volumechange', () => {
             const settingVal = video.muted || video.volume === 0 ? mutedVal : unmutedVal;
-            localStorage.setItem(settingKey, settingVal);
+            localStorage.setItem(muteSetting, settingVal);
         });
 
     }, { capture: true, once: true });
